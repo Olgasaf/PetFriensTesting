@@ -6,7 +6,7 @@ class PetFriends:
     def __init__(self):
         self.base_url = "https://petfriends.skillfactory.ru/"
 
-    def get_api_key(self, email: str, password: int) -> json:
+    def get_api_key(self, email: str, password: str) -> json:
         headers = {
             "email": email,
             "password": password,
@@ -49,7 +49,7 @@ class PetFriends:
         except json.decoder.JSONDecodeError:
             result = res.text
         return status, result
-    def add_new_pet_not_photo(self, auth_key: json, name: str, animal_type: str, age: str):
+    def add_new_pet(self, auth_key: json, name: str, animal_type: str, age: str):
         #Добавляем питомца без фото
 
         headers = {'auth_key': auth_key['key']}
