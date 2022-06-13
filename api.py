@@ -17,7 +17,7 @@ class PetFriends:
         try:
             result = res.json()
         except:
-            result = result.text
+            result = result
         return status, result
     def get_list_of_pets(self, auth_key, filter):
         headers = {'auth_key': auth_key['key']}
@@ -75,7 +75,7 @@ class PetFriends:
                 'pet_photo': (pet_photo, open(pet_photo, 'rb'), 'image/jpeg')
             })
         headers = {'auth_key': auth_key['key'], 'Content-Type': data.content_type}
-        res = requests.post(self.base_url + 'api/pets/set_photo' + pet_id, headers=headers, data=data)
+        res = requests.post(self.base_url + 'api/pets/set_photo/' + pet_id, headers=headers, data=data)
         status = res.status_code
         result = ""
         try:
